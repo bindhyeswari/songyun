@@ -1,0 +1,12 @@
+body {
+  font: 300 1em "Helvetica Neue"; }
+
+div.info {
+  background-color: #232496;
+  color: #f0f0fb;
+  padding: 1em;
+  float: left; }
+  div.info > span.banner {
+    color: #9d9ee8; }
+
+/*# sourceMappingURL=index.css.map */

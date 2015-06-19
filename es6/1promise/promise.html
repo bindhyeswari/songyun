@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function printAsyncRandom(i, callback) {
+            var random_interval = ~~(Math.random() * 1000);
+            setTimeout(function () {
+                console.log('counter: ', i, ' and the interval is ', random_interval);
+                callback(random_interval);
+            }, random_interval);
+            return random_interval;
+        }
+
+        /*for (var i = 1; i < 11; i++) {
+            printAsyncRandom(i, function() {});
+        }*/
+
+        function createPromise(i) {
+            return new Promise(function (resolve, reject) {
+                printAsyncRandom(i, resolve);
+            });
+        }
+
+        /*var promise = createPromise(1);
+
+        promise.then(function (data) {
+            console.log('The data that I got from promise ', data);
+        }, function () {});*/
+
+        var promises = [1,2,3,4,5,6,7,8,9,10].map(function (elem) {
+            return createPromise(elem);
+        });
+
+        Promise.all(promises).then(function (data) {
+            console.log('The total is: ', data.reduce(function (a, b) {
+                return a + b;
+            }));
+        });
+
+        //todo: write code so that the promise runs in series --> one after the other
+
+
+    </script>
+</head>
+<body>
+
+
+
+
+</body>
+</html>
